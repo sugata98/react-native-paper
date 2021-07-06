@@ -155,17 +155,21 @@ const PaginationDropdown = ({
   onItemsPerPageChange,
 }: PaginationDropdownProps) => {
   const { colors } = useTheme();
+  const theme = React.useContext(ThemeContext);
+
   const [showSelect, toggleSelect] = React.useState<boolean>(false);
 
   return (
     <Menu
       visible={showSelect}
       onDismiss={() => toggleSelect(!showSelect)}
+      contentStyle={{backgroundColor:theme.SURFACE_COLOR}}
       anchor={
         <Button
           mode="outlined"
           onPress={() => toggleSelect(true)}
           style={styles.button}
+          color={theme.PRIMARY_100}
           icon="menu-down"
           contentStyle={styles.contentStyle}
         >
@@ -176,10 +180,13 @@ const PaginationDropdown = ({
       {numberOfItemsPerPageList?.map((option) => (
         <Menu.Item
           key={option}
+          style={{backgroundColor:theme.SURFACE_COLOR}}
+          // titleStyle={{color: "white"}}
           titleStyle={
-            option === numberOfItemsPerPage && {
-              color: colors.primary,
-            }
+            // option === numberOfItemsPerPage && {
+            //   color: colors.primary,
+            // }
+            {color: option === numberOfItemsPerPage?theme.PRIMARY_100:theme.PRIMARY_TEXT_100}
           }
           onPress={() => {
             onItemsPerPageChange?.(option);
