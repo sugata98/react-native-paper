@@ -13,6 +13,7 @@ import { withTheme, useTheme } from '../../core/theming';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Menu from '../Menu/Menu';
 import Button from '../Button';
+import {ThemeContext} from '../../../../../ThemeContext';
 
 type Props = React.ComponentPropsWithRef<typeof View> &
   PaginationControlsProps &
@@ -81,6 +82,7 @@ const PaginationControls = ({
   showFastPaginationControls,
 }: PaginationControlsProps) => {
   const { colors } = useTheme();
+  const theme = React.useContext(ThemeContext);
   return (
     <>
       {showFastPaginationControls ? (
@@ -88,7 +90,7 @@ const PaginationControls = ({
           icon={({ size, color }) => (
             <MaterialCommunityIcon
               name="page-first"
-              color={color}
+              color={theme.PRIMARY_TEXT_100}
               size={size}
               direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
             />
@@ -103,7 +105,7 @@ const PaginationControls = ({
         icon={({ size, color }) => (
           <MaterialCommunityIcon
             name="chevron-left"
-            color={color}
+            color={theme.PRIMARY_TEXT_100}
             size={size}
             direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
           />
@@ -117,7 +119,7 @@ const PaginationControls = ({
         icon={({ size, color }) => (
           <MaterialCommunityIcon
             name="chevron-right"
-            color={color}
+            color={theme.PRIMARY_TEXT_100}
             size={size}
             direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
           />
@@ -132,7 +134,7 @@ const PaginationControls = ({
           icon={({ size, color }) => (
             <MaterialCommunityIcon
               name="page-last"
-              color={color}
+              color={theme.PRIMARY_TEXT_100}
               size={size}
               direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
             />
